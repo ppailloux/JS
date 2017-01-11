@@ -41,45 +41,83 @@
         </div>
         <script>
             function calcule() {
-            //Saisie du premier nombre
-            var nb1 = alert('Saisissez un premier nombre.');
-            if (nb1) {
-            nb1 = alert('Vous n\'avez pas saisi un nombre. Veuillez resaisir un premier nombre.');
-            }
+                //Saisie du premier nombre
+                var nb1 = prompt('Saisissez un premier nombre.');
+                nb1 = parseInt(nb1);
 
-            //Saisie du second nombre
-            var nb2 = alert('Saisissez un second nombre.');
-            if (nb2) {
-                nb2 = alert('Vous n\'avez pas saisi un nombre. Veuillez resaisir un second nombre.');
-                nb2 = parse(nb2);
-            }
+                while (isNaN(nb1)) {
+                    nb1 = prompt('Vous n\'avez pas saisi un nombre. Veuillez resaisir un premier nombre.');
+                    nb1 = parseInt(nb1);
+                }
 
-            //Addition des nombres ou pas
-            if (alert('Voulez-vous additionner les nombres et ' + nb2 + ' ?') {
-                var res = nb1 * nb2;
-                'Le résultat de ' + nb1 + ' + ' + nb2 + ' est ' + res + '.';
+                //Saisie du second nombre
+                var nb2 = prompt('Saisissez un second nombre.');
+                nb2 = parseInt(nb2);
+                while (isNaN(nb2)) {
+                    nb2 = prompt('Vous n\'avez pas saisi un nombre. Veuillez resaisir un second nombre.');
+                    nb2 = parseInt(nb2);
+                }
+
+                /* CORRECTION 1 */
+                var op = prompt("Quelle opération souhaitez-vous faire avec les nombres " + nb1 + ' et ' + nb2 + " ?. Additionner ? Saisissez +. Soustraire ? Saisissez -. Multiplier ? Saisissez *. Ou Diviser ? Saisissez /.");
+
+                switch (op) {
+                    case "+" :
+                        var res = nb1 + nb2;
+                        alert('Le résultat de ' + nb1 + ' + ' + nb2 + ' est ' + res + '.');
+                        break;
+                    case "-" :
+                        var res = nb1 - nb2;
+                        alert('Le résultat de ' + nb1 + ' - ' + nb2 + ' est ' + res + '.');
+                        break;
+                    case "*" :
+                        var res = nb1 * nb2;
+                        alert('Le résultat de ' + nb1 + ' * ' + nb2 + ' est ' + res + '.');
+                        break;
+                    case "/" :
+                        while (nb2 === 0) {
+                            nb2 = prompt('Le nombre par lequel vous souhaitez diviser est égal à 0. Veuillez resaisir un nombre différent de 0.');
+                            nb2 = parseInt(nb2);
+                        }
+                        var res = nb1 / nb2;
+                        alert('Le résultat de ' + nb1 + ' / ' + nb2 + ' est ' + res + '.');
+                        break;
+                    default :
+                        alert('Cette opération n\'existe pas.');
+                }
+
+
+                /*CORRECTION 2*/
+                //Addition des nombres ou pas
+                if (confirm('Voulez-vous additionner les nombres ' + nb1 + ' et ' + nb2 + ' ?')) {
+                    var res = nb1 + nb2;
+                    alert('Le résultat de ' + nb1 + ' + ' + nb2 + ' est ' + res + '.');
+                }
+                //Soustraction des nombres ou pas
+                else if (confirm('Voulez-vous soustraire les nombres ' + nb1 + ' et ' + nb2 + ' ?')) {
+                    var res = nb1 - nb2;
+                    alert('Le résultat de ' + nb1 + ' - ' + nb2 + ' est ' + res + '.');
+                }
+                //Multiplication des nombres ou pas 
+                else if (confirm('Voulez-vous multiplier les nombres ' + nb1 + ' et ' + nb2 + ' ?')) {
+                    var res = nb1 * nb2;
+                    alert('Le résultat de ' + nb1 + ' * ' + nb2 + ' est ' + res + '.');
+                }
+                //Division des nombres ou pas
+                else if (confirm('Voulez-vous diviser le nombre ' + nb1 + ' par ' + nb2 + ' ?')) {
+                    while (nb2 === 0) {
+                        nb2 = prompt('Le nombre par lequel vous souhaitez diviser est égal à 0. Veuillez resaisir un nombre différent de 0.');
+                        nb2 = parseInt(nb2);
+                    }
+                    var res = nb1 / nb2;
+                    alert('Le résultat de ' + nb1 + ' par ' + nb2 + ' est ' + res + '.');
+                }
+                //Abandon
+                else {
+                    alert('Vous n\'avez rien demandé de faire.');
+                }
             }
-            //Soustraction des nombres ou pas
-            elsif ('Voulez-vous soustraire les nombres ' + nb1 + ' et ' + nb2 + ' ?') {
-                var res = nb1 - nb2;
-                alert('Le résultat de ' + nb1 + ' - ' + nb2 + ' est ' + res + '.');
-            }
-            //Multiplication des nombres ou pas 
-            elsif ('Voulez-vous multiplier les nombres ' + nb1 + ' et ' + nb2 + ' ?') {
-                var res = nb1 * nb2;
-                'Le résultat de ' + nb1 + ' * ' + nb2 + ' est ' + res + '.';
-            }
-            //Division des nombres ou pas
-            else if ('Voulez-vous diviser le nombre ' + nb1 + ' par ' + nb2 + ' ?') {
-                nb2 = prompt('Le nombre par lequel vous souhaitez diviser est égal à 0. Veuillez resaisir un nombre différent de 0.');
-                var res = nb1 / nb2;
-                'Le résultat de ' + nb1 + ' par ' + nb2 + ' est ' + res + '.';
-            }
-            //Abandon
-            else {
-            alert('Vous n\'avez rien demandé de faire.');
-            }
-        </scpt>
+        </script>
         <script src="../js/classie.js"></script>
         <script src="../js/gnmenu.js"></script>
         <script>
